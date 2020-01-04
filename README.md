@@ -17,20 +17,19 @@
 ![效果展示动图](./Images/PacManX_play.gif)
 
 
-
 **可执行程序下载地址：**
 
 https://github.com/NJU-TJL/PacManX/releases
   
+****
   
-
 **Copyright © 2020 NJU-TJL**  
 
 **[开放源代码许可](https://github.com/NJU-TJL/PacManX/blob/master/LICENSE)**
 
 **转载请注明原作者：https://github.com/NJU-TJL/PacManX**
   
-  
+****
 
 详情请见于：[课程设计报告](https://github.com/NJU-TJL/PacManX/blob/master/Docs/%E8%AF%BE%E7%A8%8B%E8%AE%BE%E8%AE%A1%E6%8A%A5%E5%91%8A%20-%20%E5%90%83%E8%B1%86%E4%BA%BA%20PacManX.pdf)  
 
