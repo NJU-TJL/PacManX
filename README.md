@@ -14,7 +14,7 @@
 - **可查看历史记录TOP 10，并且可对游戏记录进行回放**
 - **在回放的过程中，支持按下方向键后，退出回放模式，在当前情形下，操纵吃豆人，进入正常的游戏模式，继续游戏**
 
-若图片加载失败，可访问CSDN博客：https://blog.csdn.net/Kingsman_T/article/details/103879515
+（若图片加载失败，可访问CSDN博客：https://blog.csdn.net/Kingsman_T/article/details/103879515 或者 同步的码云仓库：https://gitee.com/NJU-TJL/PacManX 查看）
 
 ![效果展示动图](./Images/PacManX_play.gif)
 
