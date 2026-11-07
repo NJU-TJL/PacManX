@@ -1,21 +1,21 @@
 #include "Game.h"
 
-//Ê±ÖÓÖÜÆÚ
+//æ—¶é’Ÿå‘¨æœŸ
 const int TIME_SPEED = 50;
 
-//×ó±ß½çµÄ¿ÕÓà¶¨Î»(ÓÃÓÚ×ó¶ÔÆë£©
+//å·¦è¾¹ç•Œçš„ç©ºä½™å®šä½(ç”¨äºå·¦å¯¹é½ï¼‰
 const int INFO_MARGIN_LEFT = 8;
-//ÉÏ±ß½çµÄ¿ÕÓà¶¨Î»
+//ä¸Šè¾¹ç•Œçš„ç©ºä½™å®šä½
 const int INFO_MARGIN_UP = 6;
 
 Game::Game()
 {
-	/*³õÊ¼»¯*/
-	//ÉèÖÃ´°¿Ú´óĞ¡
+	/*åˆå§‹åŒ–*/
+	//è®¾ç½®çª—å£å¤§å°
 	SetWindowSize(WINDOWS_SIZE_X, WINDOWS_SIZE_Y);
-	//ÉèÖÃËæ»úÊıÖÖ×Ó
+	//è®¾ç½®éšæœºæ•°ç§å­
 	srand((unsigned int)(time(NULL)));
-	//Òş²Ø¹â±ê
+	//éšè—å…‰æ ‡
 	HideCursor();
 }
 void Game::init()
@@ -47,27 +47,27 @@ char GameName[] = { "\
 
 int Game::start()
 {
-	//¹Ì¶¨µÄUIĞÅÏ¢
+	//å›ºå®šçš„UIä¿¡æ¯
 	SetColor(WHITE_COLOR);
 	system("cls");
 	Goto_XY(0, 2);
 	SetColor(GAMENAME_COLOR);
 	cout << GameName;
 	Goto_XY(0, MAP_SIZE + INFO_UI_SIZE - 1);
-	SetColor(TITLE_COLOR); cout << "\"¡ü\"¡¢\"¡ı\"¼üÑ¡Ôñ£¬»Ø³µ¼üÈ·ÈÏ£¬Esc¼üÍË³ö"; SetColor(THEME_COLOR);
+	SetColor(TITLE_COLOR); cout << "\"â†‘\"ã€\"â†“\"é”®é€‰æ‹©ï¼Œå›è½¦é”®ç¡®è®¤ï¼ŒEscé”®é€€å‡º"; SetColor(THEME_COLOR);
 
-	//²Î¿¼Ïà¶ÔÎ»ÖÃÉè¶¨
+	//å‚è€ƒç›¸å¯¹ä½ç½®è®¾å®š
 	int left_margin = (MAP_SIZE + SIDE_INFO_UI_SIEZ)-7;
 	int vertical_margin = (MAP_SIZE + INFO_UI_SIZE)/2+5;
 	SetColor(THEME_COLOR);
 	Goto_XY(left_margin, vertical_margin - 1);
-	cout << "¡ï"; SetColor(SELECTED_COLOR); cout << "¿ªÊ¼ÓÎÏ·"; SetColor(THEME_COLOR);
+	cout << "â˜…"; SetColor(SELECTED_COLOR); cout << "å¼€å§‹æ¸¸æˆ"; SetColor(THEME_COLOR);
 	Goto_XY(left_margin, vertical_margin + 1);
-	cout << "  ÀúÊ·¼ÇÂ¼";
+	cout << "  å†å²è®°å½•";
 
 	int selected = 0;
 	int MAX_IDX = 1;
-	//¼üÅÌ°´¼üÊ¶±ğ
+	//é”®ç›˜æŒ‰é”®è¯†åˆ«
 	while (true) {
 		char ch;
 		if (_kbhit())
@@ -83,18 +83,18 @@ int Game::start()
 					if (selected != 0){
 						selected = 0;
 						Goto_XY(left_margin, vertical_margin - 1);
-						cout << "¡ï"; SetColor(SELECTED_COLOR); cout << "¿ªÊ¼ÓÎÏ·"; SetColor(THEME_COLOR);
+						cout << "â˜…"; SetColor(SELECTED_COLOR); cout << "å¼€å§‹æ¸¸æˆ"; SetColor(THEME_COLOR);
 						Goto_XY(left_margin, vertical_margin + 1);
-						cout << "  ÀúÊ·¼ÇÂ¼";
+						cout << "  å†å²è®°å½•";
 					}
 					break;
 				case 80:
 					if (selected != MAX_IDX) {
 						selected = MAX_IDX;
 						Goto_XY(left_margin, vertical_margin - 1);
-						cout << "  ¿ªÊ¼ÓÎÏ·";
+						cout << "  å¼€å§‹æ¸¸æˆ";
 						Goto_XY(left_margin, vertical_margin + 1);
-						cout << "¡ï"; SetColor(SELECTED_COLOR); cout << "ÀúÊ·¼ÇÂ¼"; SetColor(THEME_COLOR);
+						cout << "â˜…"; SetColor(SELECTED_COLOR); cout << "å†å²è®°å½•"; SetColor(THEME_COLOR);
 					}
 					break;
 				
@@ -121,7 +121,7 @@ int speed_min = 1;
 int speed_max = 5;
 int right_way_rate = 1;
 void showSettings(int selected, int &speed) {
-	//²Î¿¼Ïà¶ÔÎ»ÖÃÉè¶¨
+	//å‚è€ƒç›¸å¯¹ä½ç½®è®¾å®š
 	int left_margin = (MAP_SIZE + SIDE_INFO_UI_SIEZ) - 7;
 	int vertical_margin = (MAP_SIZE + INFO_UI_SIZE) / 2;
 	SetColor(THEME_COLOR);
@@ -130,52 +130,52 @@ void showSettings(int selected, int &speed) {
 	case 0:
 		speed = speed_min;
 		Goto_XY(left_margin, vertical_margin);
-		cout << "¡ï"; SetColor(SELECTED_COLOR); cout << "¼òµ¥Ä£Ê½  "; SetColor(THEME_COLOR);
+		cout << "â˜…"; SetColor(SELECTED_COLOR); cout << "ç®€å•æ¨¡å¼  "; SetColor(THEME_COLOR);
 		Goto_XY(left_margin, vertical_margin + 2);
-		cout << "  ÆÕÍ¨Ä£Ê½  ";
+		cout << "  æ™®é€šæ¨¡å¼  ";
 		Goto_XY(left_margin, vertical_margin + 4);
-		cout << "  À§ÄÑÄ£Ê½  ";
+		cout << "  å›°éš¾æ¨¡å¼  ";
 		Goto_XY(left_margin, vertical_margin + 6);
-		cout << "  ×Ô¶¨ÒåÄ£Ê½";
+		cout << "  è‡ªå®šä¹‰æ¨¡å¼";
 		break;
 	case 1:
 		speed = (speed_min + speed_max) / 2;
 		Goto_XY(left_margin, vertical_margin);
-		cout << "  ¼òµ¥Ä£Ê½  ";
+		cout << "  ç®€å•æ¨¡å¼  ";
 		Goto_XY(left_margin, vertical_margin + 2);
-		cout << "¡ï"; SetColor(SELECTED_COLOR); cout << "ÆÕÍ¨Ä£Ê½  "; SetColor(THEME_COLOR);
+		cout << "â˜…"; SetColor(SELECTED_COLOR); cout << "æ™®é€šæ¨¡å¼  "; SetColor(THEME_COLOR);
 		Goto_XY(left_margin, vertical_margin + 4);
-		cout << "  À§ÄÑÄ£Ê½  ";
+		cout << "  å›°éš¾æ¨¡å¼  ";
 		Goto_XY(left_margin, vertical_margin + 6);
-		cout << "  ×Ô¶¨ÒåÄ£Ê½";
+		cout << "  è‡ªå®šä¹‰æ¨¡å¼";
 		break;
 	case 2:
 		speed = speed_max;
 		Goto_XY(left_margin, vertical_margin);
-		cout << "  ¼òµ¥Ä£Ê½  ";
+		cout << "  ç®€å•æ¨¡å¼  ";
 		Goto_XY(left_margin, vertical_margin + 2);
-		cout << "  ÆÕÍ¨Ä£Ê½  ";
+		cout << "  æ™®é€šæ¨¡å¼  ";
 		Goto_XY(left_margin, vertical_margin + 4);
-		cout << "¡ï"; SetColor(SELECTED_COLOR); cout << "À§ÄÑÄ£Ê½  "; SetColor(THEME_COLOR);
+		cout << "â˜…"; SetColor(SELECTED_COLOR); cout << "å›°éš¾æ¨¡å¼  "; SetColor(THEME_COLOR);
 		Goto_XY(left_margin, vertical_margin + 6);
-		cout << "  ×Ô¶¨ÒåÄ£Ê½";
+		cout << "  è‡ªå®šä¹‰æ¨¡å¼";
 		break;
 	case 3:
 		Goto_XY(left_margin, vertical_margin);
-		cout << "  ¼òµ¥Ä£Ê½  ";
+		cout << "  ç®€å•æ¨¡å¼  ";
 		Goto_XY(left_margin, vertical_margin + 2);
-		cout << "  ÆÕÍ¨Ä£Ê½  ";
+		cout << "  æ™®é€šæ¨¡å¼  ";
 		Goto_XY(left_margin, vertical_margin + 4);
-		cout << "  À§ÄÑÄ£Ê½  ";
+		cout << "  å›°éš¾æ¨¡å¼  ";
 		Goto_XY(left_margin, vertical_margin + 6);
-		cout << "¡ï"; SetColor(SELECTED_COLOR); cout << "×Ô¶¨ÒåÄ£Ê½"; SetColor(THEME_COLOR);
+		cout << "â˜…"; SetColor(SELECTED_COLOR); cout << "è‡ªå®šä¹‰æ¨¡å¼"; SetColor(THEME_COLOR);
 		break;
 	default:
 		break;
 	}
 
 	Goto_XY(left_margin, vertical_margin + 8);
-	cout << "Ğ¡¹ÖÒÆ¶¯ËÙ¶È£º";
+	cout << "å°æ€ªç§»åŠ¨é€Ÿåº¦ï¼š";
 	Goto_XY(left_margin, vertical_margin + 9);
 	for (int i = speed_min; i <= speed_max; i++) {
 		cout << i;
@@ -200,13 +200,13 @@ bool Game::settings()
 	SetColor(GAMENAME_COLOR);
 	cout << GameName;
 	Goto_XY(0, MAP_SIZE + INFO_UI_SIZE - 1);
-	SetColor(TITLE_COLOR); cout << "\"¡ü\"¡¢\"¡ı\"¡¢\"¡û\"¡¢\"¡ú\"¼üÑ¡Ôñ£¬»Ø³µ¼üÈ·ÈÏ£¬Esc¼ü·µ»ØÉÏ²ã | ÒÆ¶¯ËÙ¶È£ºÃ¿ÃëÒÆ¶¯µÄ¸ñÊı"; SetColor(THEME_COLOR);
+	SetColor(TITLE_COLOR); cout << "\"â†‘\"ã€\"â†“\"ã€\"â†\"ã€\"â†’\"é”®é€‰æ‹©ï¼Œå›è½¦é”®ç¡®è®¤ï¼ŒEscé”®è¿”å›ä¸Šå±‚ | ç§»åŠ¨é€Ÿåº¦ï¼šæ¯ç§’ç§»åŠ¨çš„æ ¼æ•°"; SetColor(THEME_COLOR);
 
 	int selected = 0;
 	int MAX_IDX = 3;
 	int speed = speed_min;
 	showSettings(selected, speed);
-	//¼üÅÌ°´¼üÊ¶±ğ
+	//é”®ç›˜æŒ‰é”®è¯†åˆ«
 	while (true) {
 		char ch;
 		if (_kbhit())
@@ -265,20 +265,20 @@ bool Game::settings()
 
 int RECORD_MAX_IDX = 0;
 void showRecordChoice(int selected) {
-	//¶ÔÆë
+	//å¯¹é½
 	int left_margin_No = WINDOWS_SIZE_X / 2 - 30;
 	int up_margin = 4;
 
-	//¹Ì¶¨UI
+	//å›ºå®šUI
 	Goto_XY(0, MAP_SIZE + INFO_UI_SIZE - 1);
-	SetColor(TITLE_COLOR); cout << "\"¡ü\"¡¢\"¡ı\"¼üÑ¡Ôñ£¬»Ø³µ¼ü¿ªÊ¼»Ø·Å£¬ÍË¸ñ¼üÉ¾³ı£¬Esc¼ü·µ»ØÉÏ²ã";
+	SetColor(TITLE_COLOR); cout << "\"â†‘\"ã€\"â†“\"é”®é€‰æ‹©ï¼Œå›è½¦é”®å¼€å§‹å›æ”¾ï¼Œé€€æ ¼é”®åˆ é™¤ï¼ŒEscé”®è¿”å›ä¸Šå±‚";
 	Goto_XY(left_margin_No-6, up_margin);
-	cout << "Ñ¡Ôñ"; SetColor(WHITE_COLOR);
+	cout << "é€‰æ‹©"; SetColor(WHITE_COLOR);
 
 	for (int i = 0; i <= RECORD_MAX_IDX; i++) {
 		Goto_XY(left_margin_No-5, up_margin + 2 + i * 2);
 		if (i == selected) {
-			SetColor(THEME_COLOR); cout << "¡ï"; SetColor(WHITE_COLOR);
+			SetColor(THEME_COLOR); cout << "â˜…"; SetColor(WHITE_COLOR);
 		}
 		else
 			cout << "  ";
@@ -292,9 +292,9 @@ int Game::show_record()
 	int selected = 0;
 	showRecordChoice(selected);
 	Goto_XY(WINDOWS_SIZE_X - 36, WINDOWS_SIZE_Y - 1);
-	cout << "×¢£ºÈôµØÍ¼¸Ä±ä£¬Ôò¾É¼ÇÂ¼¿ÉÄÜ»Ø·ÅÊ§°Ü";
+	cout << "æ³¨ï¼šè‹¥åœ°å›¾æ”¹å˜ï¼Œåˆ™æ—§è®°å½•å¯èƒ½å›æ”¾å¤±è´¥";
 	
-	//¼üÅÌ°´¼üÊ¶±ğ
+	//é”®ç›˜æŒ‰é”®è¯†åˆ«
 	while (true) {
 		char ch;
 		if (_kbhit())
@@ -336,45 +336,45 @@ int Game::show_record()
 
 }
 
-//ÓÃÓÚ³Ô¶¹ÈËÉÁË¸
+//ç”¨äºåƒè±†äººé—ªçƒ
 int Pacman_Colors[] = { WHITE_COLOR, RED_COLOR, GREEN_COLOR, YELLOW_COLOR, BLUE_GREEN_COLOR };
 int PacmanColors_i = 0;
 bool Game::loop()
 {
 	refresh();
 	
-	//ÓÃÓÚ·½Ïò¼ÇÂ¼
+	//ç”¨äºæ–¹å‘è®°å½•
 	int dir_pacman = -1;
 	int ghost_num = ghosts.size();
 	int *dir_ghosts = new int[ghost_num];
 	
 	int speed_adapter = 0;
 	while (true) {
-		//³õÊ¼»¯ -1 ±íÊ¾Î´ÒÆ¶¯
+		//åˆå§‹åŒ– -1 è¡¨ç¤ºæœªç§»åŠ¨
 		dir_pacman = -1;
 		for (int i = 0; i < ghost_num; i++)
 			dir_ghosts[i] = -1;
 
-		//Ğ¡¹ÖÒÆ¶¯Ä£¿é
+		//å°æ€ªç§»åŠ¨æ¨¡å—
 		if (mapX.freezeTime == 0) {
 			++speed_adapter;
 			if (speed_adapter == GHOST_SPEED) {
 				speed_adapter = 0;
-				//ËùÓĞĞ¡¹Ö¶¼ÒÆ¶¯
+				//æ‰€æœ‰å°æ€ªéƒ½ç§»åŠ¨
 				for (int i = 0; i < ghost_num; i++) {
 					dir_ghosts[i]=ghosts[i].move(mapX, pacmanX);
 				}
 			}
 			pacmanX.color = BLUE_GREEN_COLOR;
 		}
-		else { //´¦ÓÚ³¬¼¶¶¹Ä£Ê½
+		else { //å¤„äºè¶…çº§è±†æ¨¡å¼
 			mapX.freezeTime--;
 			PacmanColors_i = (PacmanColors_i + 1) % (sizeof(Pacman_Colors) / 4);
 			pacmanX.color = Pacman_Colors[PacmanColors_i];
 			pacmanX.print();
 		}
 		
-		//¼üÅÌ°´¼üÊ¶±ğ
+		//é”®ç›˜æŒ‰é”®è¯†åˆ«
 		char ch;
 		if (_kbhit())
 		{
@@ -414,73 +414,73 @@ bool Game::loop()
 			}
 		}
 
-		//¼ÇÂ¼×ßµÄ·½Ïò
+		//è®°å½•èµ°çš„æ–¹å‘
 		steps.push_back(dir_pacman);
 		for (int i = 0; i < ghost_num; i++)
 			steps.push_back(dir_ghosts[i]);
 	
-		//ÅĞ¶ÏÊÇ·ñÓÎÏ·Ê¤Àû£º³ÔÍêËùÓĞ¶¹×Ó
+		//åˆ¤æ–­æ˜¯å¦æ¸¸æˆèƒœåˆ©ï¼šåƒå®Œæ‰€æœ‰è±†å­
 		if (mapX.scores == mapX.target_scores) {
 			return game_win();
 		}
 
-		//ÅĞ¶ÏÊÇ·ñÓÎÏ·Ê§°Ü£ºÍæ¼Ò×²ÉÏĞ¡¹Ö
+		//åˆ¤æ–­æ˜¯å¦æ¸¸æˆå¤±è´¥ï¼šç©å®¶æ’ä¸Šå°æ€ª
 		for (auto&ghost_i : ghosts) {
 			if (ghost_i.hit(pacmanX,mapX))
 				return game_over();
 		}
 		
-		//¸üĞÂUI½çÃæ
+		//æ›´æ–°UIç•Œé¢
 		infoUI();
 
 		++time_counter;
-		//Ê±ÖÓÖÜÆÚ
+		//æ—¶é’Ÿå‘¨æœŸ
 		Sleep(50);
 	}
 }
 
 void Game::play(int x)
 {	
-	//¼ÇÂ¼Îª¿Õ
+	//è®°å½•ä¸ºç©º
 	if (record.items.size() == 0) return;
 
-	//´ÓÀúÊ·¼ÇÂ¼ÌõÄ¿ÖĞ£¬¶ÁÈ¡µ½µÄ²ÎÊıĞÅÏ¢
+	//ä»å†å²è®°å½•æ¡ç›®ä¸­ï¼Œè¯»å–åˆ°çš„å‚æ•°ä¿¡æ¯
 	speed_value = record.items[x].speed;
 	GHOST_SPEED = 1000 / (50 * speed_value);
 	int ghost_num = record.items[x].ghost_num;
 	
-	//Ò»°ã³õÊ¼»¯
+	//ä¸€èˆ¬åˆå§‹åŒ–
 	init();
-	//ÔÚinit()ºó¿ªÆô»Ø·Å×´Ì¬
+	//åœ¨init()åå¼€å¯å›æ”¾çŠ¶æ€
 	play_flag = true;
 	refresh();
 
-	if (ghost_num != ghosts.size()) { //Ğ£ÑéµØÍ¼µÄĞ¡¹ÖÊıÁ¿ÊÇ·ñÓëÀúÊ·¼ÇÂ¼ÖĞµÄÆ¥Åä
+	if (ghost_num != ghosts.size()) { //æ ¡éªŒåœ°å›¾çš„å°æ€ªæ•°é‡æ˜¯å¦ä¸å†å²è®°å½•ä¸­çš„åŒ¹é…
 		system("cls");
-		cout << "¼ì²âµ½ÀúÊ·¼ÇÂ¼ÌõÄ¿¶ÔÓ¦µÄµØÍ¼ÓëµØÍ¼ÎÄ¼ş²»·û£¡ÎŞ·¨²¥·Å...ÇëÉ¾³ıÀúÊ·¼ÇÂ¼ÎÄ¼ş£ºgame.record »òÕß »¹Ô­µØÍ¼" << endl;
+		cout << "æ£€æµ‹åˆ°å†å²è®°å½•æ¡ç›®å¯¹åº”çš„åœ°å›¾ä¸åœ°å›¾æ–‡ä»¶ä¸ç¬¦ï¼æ— æ³•æ’­æ”¾...è¯·åˆ é™¤å†å²è®°å½•æ–‡ä»¶ï¼šgame.record æˆ–è€… è¿˜åŸåœ°å›¾" << endl;
 		system("pause");
 		exit(-1);
 	}
-	int numPerUnit = ghost_num + 1;//Ã¿numPerUnit¸öÔÚstepsÖĞÎªÒ»¸öÊ±ÖÓÖÜÆÚµÄ²½×Ó
+	int numPerUnit = ghost_num + 1;//æ¯numPerUnitä¸ªåœ¨stepsä¸­ä¸ºä¸€ä¸ªæ—¶é’Ÿå‘¨æœŸçš„æ­¥å­
 
-	//ÓÃÓÚ·½Ïò¼ÇÂ¼
+	//ç”¨äºæ–¹å‘è®°å½•
 	int dir_pacman = -1;
 	int *dir_ghosts = new int[ghost_num];
 
 	helpUI();
 	int speed_adapter = 0;
 	while (true) {
-		//³õÊ¼»¯ -1 ±íÊ¾Î´ÒÆ¶¯
+		//åˆå§‹åŒ– -1 è¡¨ç¤ºæœªç§»åŠ¨
 		dir_pacman = record.items[x].steps[time_counter * numPerUnit];
 		for (int i = 0; i < ghost_num; i++)
 			dir_ghosts[i] = record.items[x].steps[time_counter * numPerUnit + i + 1];
 
-		//Ğ¡¹ÖÒÆ¶¯Ä£¿é
+		//å°æ€ªç§»åŠ¨æ¨¡å—
 		for (int i = 0; i < ghost_num; i++) {
 			ghosts[i].move(dir_ghosts[i], mapX, pacmanX);
 		}
 
-		if(mapX.freezeTime != 0){ //´¦ÓÚ³¬¼¶¶¹Ä£Ê½
+		if(mapX.freezeTime != 0){ //å¤„äºè¶…çº§è±†æ¨¡å¼
 			mapX.freezeTime--;
 			PacmanColors_i = (PacmanColors_i + 1) % (sizeof(Pacman_Colors) / 4);
 			pacmanX.color = Pacman_Colors[PacmanColors_i];
@@ -488,7 +488,7 @@ void Game::play(int x)
 		}
 		pacmanX.move(dir_pacman, mapX);
 
-		//Åö×²¼ì²â£ºÎŞµĞ×´Ì¬µÄÅö×²ÌØÊâ
+		//ç¢°æ’æ£€æµ‹ï¼šæ— æ•ŒçŠ¶æ€çš„ç¢°æ’ç‰¹æ®Š
 		for (auto&ghost_i : ghosts) {
 			ghost_i.hit(pacmanX, mapX);
 		}
@@ -522,7 +522,7 @@ void Game::play(int x)
 				default:
 					break;
 				}
-				//»Ø·Å¹ı³ÌÖĞ°´ÏÂÁË·½Ïò¼ü£¬ÍË³ö»Ø·Å¹ı³Ì
+				//å›æ”¾è¿‡ç¨‹ä¸­æŒ‰ä¸‹äº†æ–¹å‘é”®ï¼Œé€€å‡ºå›æ”¾è¿‡ç¨‹
 				play_flag = false;
 				break;
 			case 27://Esc
@@ -534,31 +534,31 @@ void Game::play(int x)
 			}
 		}
 		
-		//¼ÇÂ¼×ßµÄ·½Ïò
+		//è®°å½•èµ°çš„æ–¹å‘
 		steps.push_back(dir_pacman);
 		for (int i = 0; i < ghost_num; i++)
 			steps.push_back(dir_ghosts[i]);
 
 		if (!play_flag) {
-			//ÔÚ»Ø·ÅµÄ¹ı³ÌÖĞ°´ÏÂÁË·½Ïò¼ü£¬ÍË³ö»Ø·ÅÄ£Ê½£¬½øÈëÕı³£ÓÎÏ·Ä£Ê½
+			//åœ¨å›æ”¾çš„è¿‡ç¨‹ä¸­æŒ‰ä¸‹äº†æ–¹å‘é”®ï¼Œé€€å‡ºå›æ”¾æ¨¡å¼ï¼Œè¿›å…¥æ­£å¸¸æ¸¸æˆæ¨¡å¼
 			loop();
 			return;
 		}
 
-		//¸üĞÂUI½çÃæ
+		//æ›´æ–°UIç•Œé¢
 		infoUI();
 
 		++time_counter;
 		if (time_counter * numPerUnit >= record.items[x].steps_num) {
-			//»Ø·Å½áÊø-±ê¼Ç³Ô¶¹ÈËµÄ×îÖÕÎ»ÖÃ
-			pacmanX.setKey("¨w");
+			//å›æ”¾ç»“æŸ-æ ‡è®°åƒè±†äººçš„æœ€ç»ˆä½ç½®
+			pacmanX.setKey("â•³");
 			pacmanX.print();
 			Goto_XY(0, WINDOWS_SIZE_Y - 2);
-			cout << "£¨°´ÈÎÒâ¼ü»Øµ½Ö÷½çÃæ£©" << endl;
+			cout << "ï¼ˆæŒ‰ä»»æ„é”®å›åˆ°ä¸»ç•Œé¢ï¼‰" << endl;
 			system("pause");
 			break;
 		}
-		//Ê±ÖÓÖÜÆÚ
+		//æ—¶é’Ÿå‘¨æœŸ
 		Sleep(50);
 	}
 	delete[] dir_ghosts;
@@ -569,10 +569,10 @@ void Game::pause()
 	int bias_temp=23;
 	Goto_XY(MAP_SIZE * 2 + 18, INFO_MARGIN_UP + bias_temp);
 	if (play_flag) {
-		SetColor(SELECTED_COLOR); cout << "»Ø·ÅÔİÍ£"; SetColor(WHITE_COLOR);
+		SetColor(SELECTED_COLOR); cout << "å›æ”¾æš‚åœ"; SetColor(WHITE_COLOR);
 	}
 	else {
-		SetColor(PAUSE_COLOR); cout << "ÓÎÏ·ÔİÍ£"; SetColor(WHITE_COLOR);
+		SetColor(PAUSE_COLOR); cout << "æ¸¸æˆæš‚åœ"; SetColor(WHITE_COLOR);
 	}
 	while (true) {
 		char ch;
@@ -604,7 +604,7 @@ bool Game::game_over()
 	SetColor(LOST_COLOR);
 	cout << "... Game Over ..." << endl;
 	SetColor(WHITE_COLOR);
-	cout << "£¨°´ÈÎÒâ¼ü»Øµ½Ö÷½çÃæ£©" << endl;
+	cout << "ï¼ˆæŒ‰ä»»æ„é”®å›åˆ°ä¸»ç•Œé¢ï¼‰" << endl;
 	system("pause");
 	return true;
 }
@@ -617,7 +617,7 @@ bool Game::game_win()
 	SetColor(WIN_COLOR);
 	cout << "Congratulations~You Win!!!..." << endl;
 	SetColor(WHITE_COLOR);
-	cout << "£¨°´ÈÎÒâ¼ü»Øµ½Ö÷½çÃæ£©" << endl;
+	cout << "ï¼ˆæŒ‰ä»»æ„é”®å›åˆ°ä¸»ç•Œé¢ï¼‰" << endl;
 	system("pause");
 	return true;
 }
@@ -625,29 +625,29 @@ bool Game::game_win()
 extern int Ghost_Colors[];
 void Game::infoUI()
 {
-	//Êä³öÓÎÏ·Ê±³¤
+	//è¾“å‡ºæ¸¸æˆæ—¶é•¿
 	Goto_XY(MAP_SIZE * 2 + 2, WINDOWS_SIZE_Y - 1);
-	printf("ÓÎÏ·Ê±³¤£º%.1fs", time_counter*50.0 / 1000);
+	printf("æ¸¸æˆæ—¶é•¿ï¼š%.1fs", time_counter*50.0 / 1000);
 
-	//Êä³ö·Ö¸îÏß
+	//è¾“å‡ºåˆ†å‰²çº¿
 	Goto_XY(0, MAP_SIZE);
 	string str_spliter(MAP_SIZE * 2, '-');
 	cout << str_spliter;
-	//Êä³ö·ÖÊı
+	//è¾“å‡ºåˆ†æ•°
 	Goto_XY(0, MAP_SIZE + INFO_UI_SIZE / 2);
 	string str_Space(MAP_SIZE * 2, ' ');
 	cout << str_Space;
 	Goto_XY(0, MAP_SIZE + INFO_UI_SIZE / 2);
-	cout << "µ±Ç°·ÖÊı£º" << mapX.scores;
-	//Êä³öÀäÈ´Ê±¼ä
+	cout << "å½“å‰åˆ†æ•°ï¼š" << mapX.scores;
+	//è¾“å‡ºå†·å´æ—¶é—´
 	Goto_XY(0, MAP_SIZE + INFO_UI_SIZE - 2);
 	cout << str_Space;
 	Goto_XY(0, MAP_SIZE + INFO_UI_SIZE - 1);
 	cout << str_Space;
 	if (mapX.freezeTime > 0) {
 		Goto_XY(0, MAP_SIZE + INFO_UI_SIZE - 2);
-		printf("¾²Ö¹ - µ¹¼ÆÊ±£º%.1fs", mapX.freezeTime*50.0 / 1000);
-		//cout << "Í£Ö¹ÒÆ¶¯µ¹¼ÆÊ±£º"<< mapX.freezeTime*50.0/1000<<"s";
+		printf("é™æ­¢ - å€’è®¡æ—¶ï¼š%.1fs", mapX.freezeTime*50.0 / 1000);
+		//cout << "åœæ­¢ç§»åŠ¨å€’è®¡æ—¶ï¼š"<< mapX.freezeTime*50.0/1000<<"s";
 		Goto_XY(0, MAP_SIZE + INFO_UI_SIZE - 1);
 		string str_time_counter((mapX.freezeTime)*MAP_SIZE * 2 / MAX_FREEZE_TIME, '#');
 		cout << str_time_counter;
@@ -656,27 +656,27 @@ void Game::infoUI()
 
 void Game::helpUI()
 {
-	/* ²à±ßÀ¸²¼¾Ö */
-	//·Ö½çÏß
+	/* ä¾§è¾¹æ å¸ƒå±€ */
+	//åˆ†ç•Œçº¿
 	for (int i = 0; i < MAP_SIZE + INFO_UI_SIZE; i++) {
 		Goto_XY(MAP_SIZE * 2, i);
 		cout << "|";
 	}
 	int width = 28;
-	//Ä£Ê½
+	//æ¨¡å¼
 	if (play_flag) {
 		Goto_XY(MAP_SIZE * 2 + INFO_MARGIN_LEFT + width / 2 - 4, INFO_MARGIN_UP - 5);
-		SetColor(MODE_COLOR); cout << "»Ø·ÅÄ£Ê½"; SetColor(WHITE_COLOR);
+		SetColor(MODE_COLOR); cout << "å›æ”¾æ¨¡å¼"; SetColor(WHITE_COLOR);
 	}
 	else {
 		Goto_XY(MAP_SIZE * 2 + INFO_MARGIN_LEFT + width / 2 - 4, INFO_MARGIN_UP - 5);
-		SetColor(MODE_COLOR); cout << "ÓÎÏ·Ä£Ê½"; SetColor(WHITE_COLOR);
+		SetColor(MODE_COLOR); cout << "æ¸¸æˆæ¨¡å¼"; SetColor(WHITE_COLOR);
 	}
 	
 
-	//²Ù×÷·½·¨ËµÃ÷¿ò
+	//æ“ä½œæ–¹æ³•è¯´æ˜æ¡†
 	Goto_XY(MAP_SIZE * 2 + INFO_MARGIN_LEFT + width / 2 - 4, INFO_MARGIN_UP - 2);
-	SetColor(TITLE_COLOR); cout << "°´¼üËµÃ÷"; SetColor(WHITE_COLOR);
+	SetColor(TITLE_COLOR); cout << "æŒ‰é”®è¯´æ˜"; SetColor(WHITE_COLOR);
 	Goto_XY(MAP_SIZE * 2 + INFO_MARGIN_LEFT - 1, INFO_MARGIN_UP - 3);
 	string line1(width, '-');
 	cout << "+" << line1 << "+";
@@ -692,29 +692,29 @@ void Game::helpUI()
 	}
 	if (play_flag) {
 		Goto_XY(MAP_SIZE * 2 + INFO_MARGIN_LEFT + 2, INFO_MARGIN_UP);
-		cout << "ÖÕÖ¹»Ø·Å£¬ÖØĞÂ²Ù×İ³Ô¶¹ÈË£º";
+		cout << "ç»ˆæ­¢å›æ”¾ï¼Œé‡æ–°æ“çºµåƒè±†äººï¼š";
 		Goto_XY(MAP_SIZE * 2 + INFO_MARGIN_LEFT + 2, INFO_MARGIN_UP + 1);
-		cout << "\"¡ü\"¡¢\"¡ı\"¡¢\"¡û\"¡¢\"¡ú\"¼ü";
+		cout << "\"â†‘\"ã€\"â†“\"ã€\"â†\"ã€\"â†’\"é”®";
 	}
 	else {
 		Goto_XY(MAP_SIZE * 2 + INFO_MARGIN_LEFT + 2, INFO_MARGIN_UP);
-		cout << "¿ØÖÆÒÆ¶¯£º";
+		cout << "æ§åˆ¶ç§»åŠ¨ï¼š";
 		Goto_XY(MAP_SIZE * 2 + INFO_MARGIN_LEFT + 2, INFO_MARGIN_UP + 1);
-		cout << "\"¡ü\"¡¢\"¡ı\"¡¢\"¡û\"¡¢\"¡ú\"¼ü";
+		cout << "\"â†‘\"ã€\"â†“\"ã€\"â†\"ã€\"â†’\"é”®";
 	}
 	
 
 	Goto_XY(MAP_SIZE * 2 + INFO_MARGIN_LEFT + 2, INFO_MARGIN_UP + 3);
-	cout << "ÔİÍ£ - ¿Õ¸ñ¼ü";
+	cout << "æš‚åœ - ç©ºæ ¼é”®";
 	Goto_XY(MAP_SIZE * 2 + INFO_MARGIN_LEFT + 2, INFO_MARGIN_UP + 4);
-	cout << "·µ»Ø - Esc¼ü";
+	cout << "è¿”å› - Escé”®";
 
-	//Í¼ÀıËµÃ÷¿ò
+	//å›¾ä¾‹è¯´æ˜æ¡†
 	width = 36;
 	int bias_vertical = 10;
 	int TEMP_MARGIN_LEFT = INFO_MARGIN_LEFT - 4;
 	Goto_XY(MAP_SIZE * 2 + TEMP_MARGIN_LEFT + width / 2 - 2, INFO_MARGIN_UP + bias_vertical);
-	SetColor(TITLE_COLOR); cout << "Í¼Àı"; SetColor(WHITE_COLOR);
+	SetColor(TITLE_COLOR); cout << "å›¾ä¾‹"; SetColor(WHITE_COLOR);
 	Goto_XY(MAP_SIZE * 2 + TEMP_MARGIN_LEFT - 1, INFO_MARGIN_UP + bias_vertical - 1);
 	string line2(width, '-');
 	cout << "+" << line2 << "+";
@@ -730,23 +730,23 @@ void Game::helpUI()
 	}
 
 	Goto_XY(MAP_SIZE * 2 + INFO_MARGIN_LEFT, INFO_MARGIN_UP + 2 + bias_vertical);
-	cout << "³Ô¶¹ÈË£º";
-	Position Player((MAP_SIZE * 2 + INFO_MARGIN_LEFT + 9) / 2, INFO_MARGIN_UP + 2 + bias_vertical, "¡ü", BLUE_GREEN_COLOR);
+	cout << "åƒè±†äººï¼š";
+	Position Player((MAP_SIZE * 2 + INFO_MARGIN_LEFT + 9) / 2, INFO_MARGIN_UP + 2 + bias_vertical, "â†‘", BLUE_GREEN_COLOR);
 	Player.print();
 	Goto_XY(MAP_SIZE * 2 + INFO_MARGIN_LEFT, INFO_MARGIN_UP + 4 + bias_vertical);
-	cout << "Ğ¡¹Ö£º";
+	cout << "å°æ€ªï¼š";
 	for (int i = 0; i < ghosts.size(); i++) {
-		Position ghost((MAP_SIZE * 2 + INFO_MARGIN_LEFT + 7 + i * 2) / 2, INFO_MARGIN_UP + 4 + bias_vertical, "©ì", Ghost_Colors[i]);
+		Position ghost((MAP_SIZE * 2 + INFO_MARGIN_LEFT + 7 + i * 2) / 2, INFO_MARGIN_UP + 4 + bias_vertical, "â•ˆ", Ghost_Colors[i]);
 		ghost.print();
 	}
 	Goto_XY(MAP_SIZE * 2 + INFO_MARGIN_LEFT, INFO_MARGIN_UP + 6 + bias_vertical);
-	cout << "³¬¼¶¶¹£º   £¨5sÄÚ´¦ÓÚÎŞµĞ×´Ì¬£©";
-	Position SuperPean((MAP_SIZE * 2 + INFO_MARGIN_LEFT + 9) / 2, INFO_MARGIN_UP + 6 + bias_vertical, "¨’", GREEN_COLOR);
+	cout << "è¶…çº§è±†ï¼š   ï¼ˆ5så†…å¤„äºæ— æ•ŒçŠ¶æ€ï¼‰";
+	Position SuperPean((MAP_SIZE * 2 + INFO_MARGIN_LEFT + 9) / 2, INFO_MARGIN_UP + 6 + bias_vertical, "âŠ•", GREEN_COLOR);
 	SuperPean.print();
 	
 	Goto_XY(MAP_SIZE * 2 + INFO_MARGIN_LEFT + 2, INFO_MARGIN_UP + 10 + bias_vertical);
 	SetColor(HIGHLIGHT_COLOR);
-	cout << "µ±Ç°Ğ¡¹ÖÒÆ¶¯ËÙ¶È£º"<< speed_value <<"¸ñ/Ãë";
+	cout << "å½“å‰å°æ€ªç§»åŠ¨é€Ÿåº¦ï¼š"<< speed_value <<"æ ¼/ç§’";
 	SetColor(WHITE_COLOR);
 }
 

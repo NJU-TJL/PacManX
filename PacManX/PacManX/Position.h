@@ -7,15 +7,15 @@
 using namespace std;
 #include"win_tools.h"
 
-//ÉÏÏÂ×óÓÒ
+//ä¸Šä¸‹å·¦å³
 enum DIRECTION { UP, DOWN, LEFT, RIGHT };
 
 class Position
 {
 protected:
-	string key;//¸ÃµãµÄ×Ö·û
-	int x, y;  //×ø±ê
-	int color; //ÑÕÉ«
+	string key;//è¯¥ç‚¹çš„å­—ç¬¦
+	int x, y;  //åæ ‡
+	int color; //é¢œè‰²
 public:
 	friend class Map;
 	Position() {
@@ -26,13 +26,13 @@ public:
 		color = icolor;
 		setKey(str);
 	}
-	//Éè¶¨×Ö·û
+	//è®¾å®šå­—ç¬¦
 	void setKey(const string str);
-	//Éè¶¨ÏÔÊ¾×ø±ê
+	//è®¾å®šæ˜¾ç¤ºåæ ‡
 	void setXY(int a, int b);
-	//ÔÚÖ¸¶¨×ø±ê´¦ÏÔÊ¾
+	//åœ¨æŒ‡å®šåæ ‡å¤„æ˜¾ç¤º
 	void print();
-	//Çå¿Õ¸Ã×ø±ê´¦µÄ×Ö·û
+	//æ¸…ç©ºè¯¥åæ ‡å¤„çš„å­—ç¬¦
 	void clear();
 };
 

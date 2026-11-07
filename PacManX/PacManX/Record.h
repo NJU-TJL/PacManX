@@ -9,38 +9,38 @@ using namespace std;
 #include"win_tools.h"
 
 class Record;
-class RecordItem //Ò»Ìõ¼ÇÂ¼
+class RecordItem //ä¸€æ¡è®°å½•
 {
-	string name;//¼ÇÂ¼Ãû£¨Ê±¼ä´Á£©
-	int score;//·ÖÊı
-	int speed;//Ğ¡¹ÖÒÆ¶¯ËÙ¶È
-	int ghost_num;//Ğ¡¹ÖÊı£¨3~5¸ö£©
-	int steps_num;//×Ü¹²¾­ÀúµÄÊ±¼äÖÜÆÚ
-	vector<int> steps;//¼ÇÂ¼µÄÃ¿¸öÊ±ÖÓÖÜÆÚÊ±³Ô¶¹ÈË/Ğ¡¹ÖµÄÒÆ¶¯·½Ïò
+	string name;//è®°å½•åï¼ˆæ—¶é—´æˆ³ï¼‰
+	int score;//åˆ†æ•°
+	int speed;//å°æ€ªç§»åŠ¨é€Ÿåº¦
+	int ghost_num;//å°æ€ªæ•°ï¼ˆ3~5ä¸ªï¼‰
+	int steps_num;//æ€»å…±ç»å†çš„æ—¶é—´å‘¨æœŸ
+	vector<int> steps;//è®°å½•çš„æ¯ä¸ªæ—¶é’Ÿå‘¨æœŸæ—¶åƒè±†äºº/å°æ€ªçš„ç§»åŠ¨æ–¹å‘
 public:
 	friend class Record;
 	friend class Game;
 	RecordItem() { steps_num = 0;};
 	RecordItem(const string& iname, int iscore) { name = iname; score = iscore; steps_num = 0;};
-	bool operator <(const RecordItem &B) { return score > B.score; }//ÓÃÓÚ½µĞò sort
+	bool operator <(const RecordItem &B) { return score > B.score; }//ç”¨äºé™åº sort
 };
 
-class Record //¼ÇÂ¼¹ÜÀíÆ÷
+class Record //è®°å½•ç®¡ç†å™¨
 {
-	const char *filepath; //´æ·ÅÀúÊ·¼ÇÂ¼µÄÎÄ¼şÃû
-	vector<RecordItem> items; //ÀúÊ·¼ÇÂ¼ÌõÄ¿
+	const char *filepath; //å­˜æ”¾å†å²è®°å½•çš„æ–‡ä»¶å
+	vector<RecordItem> items; //å†å²è®°å½•æ¡ç›®
 public:
 	friend class Game;
 	Record():filepath("game.record"){};
-	//´ÓÎÄ¼şÖĞ¶ÁÈ¡ÀúÊ·¼ÇÂ¼ĞÅÏ¢
+	//ä»æ–‡ä»¶ä¸­è¯»å–å†å²è®°å½•ä¿¡æ¯
 	void read();
-	//½«ÀúÊ·ĞÅÏ¢´æÈëÎÄ¼ş
+	//å°†å†å²ä¿¡æ¯å­˜å…¥æ–‡ä»¶
 	void save();
-	//Ôö¼ÓÒ»ÌõÀúÊ·¼ÇÂ¼ĞÅÏ¢
+	//å¢åŠ ä¸€æ¡å†å²è®°å½•ä¿¡æ¯
 	void add(int the_score,const vector<int> &steps,int ghost_num,int speed);
-	//É¾³ıÖ¸¶¨ÏÂ±êµÄÀúÊ·¼ÇÂ¼ÌõÄ¿
+	//åˆ é™¤æŒ‡å®šä¸‹æ ‡çš„å†å²è®°å½•æ¡ç›®
 	void del(int x);
-	//Õ¹Ê¾ÀúÊ·¼ÇÂ¼
+	//å±•ç¤ºå†å²è®°å½•
 	void show();
 };
 

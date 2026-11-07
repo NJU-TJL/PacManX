@@ -5,9 +5,9 @@
 #include"Record.h"
 #include<conio.h>
 
-//��ϢUI�ĳߴ�
+//信息UI的尺寸
 const int INFO_UI_SIZE = 5;
-//�����
+//侧边栏
 const int SIDE_INFO_UI_SIEZ = 22;
 
 extern const int WINDOWS_SIZE_X;
@@ -15,48 +15,48 @@ extern const int WINDOWS_SIZE_Y;
 
 class Game
 {
-	//�ĸ�ģ�飺�Զ��ˡ�С�֡���ͼ����ʷ��¼
+	//四个模块：吃豆人、小怪、地图、历史记录
 	Pacman pacmanX;
 	vector<Ghost> ghosts;
 	Map mapX;
 	Record record;
 
-	//С���ƶ��ٶȵ���
+	//小怪移动速度调节
 	int GHOST_SPEED,speed_value;
-	//�ѹ���ʱ�����ڵĸ���
+	//已过的时钟周期的个数
 	int time_counter;
-	//��¼ÿ��ʱ������ʱ�Զ���/С�ֵ��ƶ�����
+	//记录每个时钟周期时吃豆人/小怪的移动方向
 	vector<int> steps;
-	//��ʶ�Ƿ��ڻط�״̬
+	//标识是否处于回放状态
 	bool play_flag;
 
 public:
 	Game();
-	//��Ϸ��ʼ��
+	//游戏初始化
 	void init();
-	//��Ϸ��ʼ����
+	//游戏初始界面
 	int start();
-	//��Ϸ����ѡ��
+	//游戏配置选择
 	bool settings();
-	//��ʷ��¼չʾ
+	//历史记录展示
 	int show_record();
-	//��Ϸѭ��
+	//游戏循环
 	bool loop();
-	//��Ϸ�ط�
+	//游戏回放
 	void play(int x);
 	
 private:
-	//��Ϸ��ͣ
+	//游戏暂停
 	void pause();
-	//��Ϸ����
+	//游戏结束
 	bool game_over();
-	//��Ϸʤ��
+	//游戏胜利
 	bool game_win();
-	//�����������Ϸ��Ϣ��UI
+	//分数等相关游戏信息的UI
 	void infoUI();
-	//������ϢUI����
+	//帮助信息UI绘制
 	void helpUI();
-	//��ͣ�����»������н���
+	//暂停后，重新绘制所有界面
 	void refresh();
 };
 

@@ -1,32 +1,32 @@
 #include "Map.h"
 #include "Ghost.h"
 
-//Ô¤ÏÈ¶¨ÒåµÄÑÕÉ«Êı×é
+//é¢„å…ˆå®šä¹‰çš„é¢œè‰²æ•°ç»„
 int Ghost_Colors[] = { RED_COLOR, GREEN_COLOR, WHITE_COLOR,PINK_COLOR,YELLOW_LITE_COLOR };
 const int LINE_MAX = 200;
 void Map::init(const char * filepath, Pacman & pacman, vector<Ghost> &ghosts)
 {
-	//³õÊ¼»¯
+	//åˆå§‹åŒ–
 	scores = 0;
 	freezeTime = 0;
 	target_scores = 0;
 	ghosts.clear();
 
-	//´ÓÎÄ¼şÖĞ¶ÁÈëµØÍ¼
+	//ä»æ–‡ä»¶ä¸­è¯»å…¥åœ°å›¾
 	ifstream fin(filepath);
 	if (!fin) {
 		system("cls");
-		cout << "µØÍ¼ÎÄ¼ş´ò¿ªÊ§°Ü£¡Çë¼ì²é.exe³ÌĞòÍ¬Ä¿Â¼ÏÂÊÇ·ñ´æÔÚmap.txtÎÄ¼ş »òÕß ¸ü»»±¾³ÌĞò´æ·ÅÎ»ÖÃ\n\n" << endl;
+		cout << "åœ°å›¾æ–‡ä»¶æ‰“å¼€å¤±è´¥ï¼è¯·æ£€æŸ¥.exeç¨‹åºåŒç›®å½•ä¸‹æ˜¯å¦å­˜åœ¨map.txtæ–‡ä»¶ æˆ–è€… æ›´æ¢æœ¬ç¨‹åºå­˜æ”¾ä½ç½®\n\n" << endl;
 		system("pause");
 		exit(-1);
 	}
 	char line[LINE_MAX];
 	int j = 0;
 	while (fin.getline(line, LINE_MAX)) {
-		if (line[0] == '#'||line[0] == ' ') continue;//'#' ¿ªÍ·µÄ×¢ÊÍ
+		if (line[0] == '#'||line[0] == ' ') continue;//'#' å¼€å¤´çš„æ³¨é‡Š
 		if (strlen(line) != MAP_SIZE * 2) {
 			system("cls");
-			cout << "µØÍ¼³ß´ç²»·û£¡Çë±£³Ö29¡Á29µÄ´óĞ¡~ÇëÖØĞÂ±à¼­µØÍ¼ÎÄ¼ş...\n\n";
+			cout << "åœ°å›¾å°ºå¯¸ä¸ç¬¦ï¼è¯·ä¿æŒ29Ã—29çš„å¤§å°~è¯·é‡æ–°ç¼–è¾‘åœ°å›¾æ–‡ä»¶...\n\n";
 			system("pause");
 			exit(-1);
 		}
@@ -34,31 +34,31 @@ void Map::init(const char * filepath, Pacman & pacman, vector<Ghost> &ghosts)
 			char tempWord[3];
 			tempWord[0] = line[i * 2]; tempWord[1] = line[i * 2 + 1]; tempWord[2] = '\0';
 			string keyStr(tempWord);
-			if (keyStr == "  ") {//¿Õ°×
+			if (keyStr == "  ") {//ç©ºç™½
 				points[i][j].setType(0);
 			}
-			else if (keyStr == "¡ö"){//Ç½
+			else if (keyStr == "â– "){//å¢™
 				points[i][j].setType(1);
 			}
-			else if (keyStr == "¡¤") {//¶¹×Ó
+			else if (keyStr == "Â·") {//è±†å­
 				points[i][j].setType(2);
 				target_scores++;
 			}
-			else if (keyStr == "¨’") {//³¬¼¶¶¹×Ó
+			else if (keyStr == "âŠ•") {//è¶…çº§è±†å­
 				points[i][j].setType(3);
 			}
-			else if (keyStr == "©ì") {//Ğ¡¹Ö
+			else if (keyStr == "â•ˆ") {//å°æ€ª
 				points[i][j].setType(0);
 				ghosts.emplace_back(Ghost(i, j));
 				if (ghosts.size() > 5) {
 					system("cls");
-					cout << "Ğ¡¹ÖÊıÁ¿´óÓÚ5£¡ÇëÖØĞÂ±à¼­µØÍ¼ÎÄ¼ş...\n\n";
+					cout << "å°æ€ªæ•°é‡å¤§äº5ï¼è¯·é‡æ–°ç¼–è¾‘åœ°å›¾æ–‡ä»¶...\n\n";
 					system("pause");
 					exit(-1);
 				}
 				ghosts[ghosts.size() - 1].color = Ghost_Colors[ghosts.size() - 1];
 			}
-			else if (keyStr == "¡ü") {//³Ô¶¹ÈË
+			else if (keyStr == "â†‘") {//åƒè±†äºº
 				points[i][j].setType(0);
 				pacman.init(i,j);
 			}
@@ -67,7 +67,7 @@ void Map::init(const char * filepath, Pacman & pacman, vector<Ghost> &ghosts)
 	}
 	if (j != MAP_SIZE) {
 		system("cls");
-		cout << "µØÍ¼³ß´ç²»·û£¡Çë±£³Ö29¡Á29µÄ´óĞ¡~ÇëÖØĞÂ±à¼­µØÍ¼ÎÄ¼ş...\n\n";
+		cout << "åœ°å›¾å°ºå¯¸ä¸ç¬¦ï¼è¯·ä¿æŒ29Ã—29çš„å¤§å°~è¯·é‡æ–°ç¼–è¾‘åœ°å›¾æ–‡ä»¶...\n\n";
 		system("pause");
 		exit(-1);
 	}
@@ -100,16 +100,16 @@ void Map::delSuperPean(int x, int y)
 	points[x][y].setType(SPACE);
 	points[x][y].print();
 }
-//¼ÇÂ¼Ò»¸ö×ø±êµÄÇ°Ò»¸öÎ»ÖÃµÄ×ø±ê
+//è®°å½•ä¸€ä¸ªåæ ‡çš„å‰ä¸€ä¸ªä½ç½®çš„åæ ‡
 int pre[MAP_SIZE*MAP_SIZE];
-//ÅĞ¶ÏÒ»¸ö×ø±êÊÇ·ñÒÑ¾­×ß¹ı
+//åˆ¤æ–­ä¸€ä¸ªåæ ‡æ˜¯å¦å·²ç»èµ°è¿‡
 bool visited[MAP_SIZE][MAP_SIZE];
-//ËÄ¸ö·½Ïò
+//å››ä¸ªæ–¹å‘
 int dx[4] = { 1, 0, -1, 0 };
 int dy[4] = { 0, 1, 0, -1 };
 void Map::findPath(Position & A, Position & B)
 {
-	//³õÊ¼»¯
+	//åˆå§‹åŒ–
 	for (int i = 0; i < MAP_SIZE; i++) {
 		for (int j = 0; j < MAP_SIZE; j++) {
 			visited[i][j] = false;
@@ -145,17 +145,17 @@ void Map::findPath(Position & A, Position & B)
 }
 int Map::findDir(Position & A, Position & B)
 {
-	//BFSÕÒ³öÂ·¾¶£¬¼ÇÂ¼ÔÚpreÊı×éÖĞ
+	//BFSæ‰¾å‡ºè·¯å¾„ï¼Œè®°å½•åœ¨preæ•°ç»„ä¸­
 	findPath(A, B);
 
-	//´ÓÂ·¾¶ÖĞÕÒ³öÏÂÒ»²½A->BÏÂÒ»²½¸Ã×ßµÄ·½Ïò
+	//ä»è·¯å¾„ä¸­æ‰¾å‡ºä¸‹ä¸€æ­¥A->Bä¸‹ä¸€æ­¥è¯¥èµ°çš„æ–¹å‘
 	int endPoint = B.x*MAP_SIZE + B.y;
 	while (true) {
 		int prePoint = pre[endPoint];
 		int ix = prePoint / MAP_SIZE;
 		int iy = prePoint % MAP_SIZE;
 		if (ix == A.x&&iy == A.y) {
-			//ÕÒÁËµÚÒ»²½¸Ã×ßµÄµã
+			//æ‰¾äº†ç¬¬ä¸€æ­¥è¯¥èµ°çš„ç‚¹
 			int dirx = endPoint / MAP_SIZE;
 			int diry = endPoint % MAP_SIZE;
 			if (dirx == ix && diry == iy - 1)
@@ -181,15 +181,15 @@ void MapPos::setType(int t)
 		setKey("  ");
 		break;
 	case WALL:
-		setKey("¡ö");
+		setKey("â– ");
 		color = BLUE_LITE_COLOR;
 		break;
 	case PEAN:
-		setKey("¡¤");
+		setKey("Â·");
 		color = YELLOW_COLOR;
 		break;
 	case SUPER_PEAN:
-		setKey("¨’");
+		setKey("âŠ•");
 		color = GREEN_COLOR;
 		break;
 	default:
