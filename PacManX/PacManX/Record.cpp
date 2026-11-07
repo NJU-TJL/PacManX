@@ -33,7 +33,7 @@ void Record::save()
 	ofstream fout(filepath);
 	if (!fout) {
 		system("cls");
-		cout << ".exeÍ¬Ä¿Â¼ÏÂ£¬Ğ´Èë\"" << filepath << "\"ÎÄ¼şÊ§°Ü£¡Çë¸ü»»´æ·ÅÄ¿Â¼...\n\n\n";
+		cout << ".exeåŒç›®å½•ä¸‹ï¼Œå†™å…¥\"" << filepath << "\"æ–‡ä»¶å¤±è´¥ï¼è¯·æ›´æ¢å­˜æ”¾ç›®å½•...\n\n\n";
 		exit(-1);
 	}
 	fout << items.size() << endl;
@@ -54,10 +54,10 @@ void Record::save()
 void Record::add(int the_score, const vector<int> &steps, int ghost_num, int speed)
 {
 	read();
-	//ÒÔµ±Ç°Ê±¼ä×÷Îª¼ÇÂ¼Ãû×Ö
+	//ä»¥å½“å‰æ—¶é—´ä½œä¸ºè®°å½•åå­—
 	time_t t = time(NULL);
 	char time_string[64] = { 0 };
-	strftime(time_string, sizeof(time_string) - 1, "%Y-%m-%d_%H:%M:%S", localtime(&t));     //Äê-ÔÂ-ÈÕ Ê±-·Ö-Ãë
+	strftime(time_string, sizeof(time_string) - 1, "%Y-%m-%d_%H:%M:%S", localtime(&t));     //å¹´-æœˆ-æ—¥ æ—¶-åˆ†-ç§’
 	items.push_back(RecordItem(time_string, the_score));
 	int idx = items.size() - 1;
 	items[idx].ghost_num = ghost_num;
@@ -92,7 +92,7 @@ extern const int WINDOWS_SIZE_X;
 extern const int WINDOWS_SIZE_Y;
 void Record::show()
 {
-	//¶ÔÆë
+	//å¯¹é½
 	int left_margin_No = WINDOWS_SIZE_X / 2 - 30;
 	int left_margin_name = left_margin_No + 10;
 	int left_margin_score = left_margin_name + 25;
@@ -105,23 +105,23 @@ void Record::show()
 	system("cls");
 	SetColor(HIGHLIGHT_COLOR);
 	Goto_XY(WINDOWS_SIZE_X / 2 - 8, 0);
-	cout << "ÀúÊ·¼ÇÂ¼ - TOP 10";
+	cout << "å†å²è®°å½• - TOP 10";
 	SetColor(TITLE_COLOR);
 	Goto_XY(left_margin_No, up_margin);
-	cout << "ÅÅÃû";
+	cout << "æ’å";
 	Goto_XY(left_margin_name, up_margin);
-	cout << "¼ÇÂ¼Ê±¼ä";
+	cout << "è®°å½•æ—¶é—´";
 	Goto_XY(left_margin_score, up_margin);
-	cout << "µÃ·Ö";
+	cout << "å¾—åˆ†";
 	Goto_XY(left_margin_time, up_margin);
-	cout << "ÓÎÏ·Ê±³¤";
+	cout << "æ¸¸æˆæ—¶é•¿";
 	Goto_XY(left_margin_speed, up_margin);
-	cout << "Ğ¡¹ÖÒÆ¶¯ËÙ¶È";
+	cout << "å°æ€ªç§»åŠ¨é€Ÿåº¦";
 	SetColor(WHITE_COLOR);
 
 	if (items.size() == 0) {
 		Goto_XY(left_margin_No, up_margin + 2);
-		cout << "£¨¼ÇÂ¼Îª¿Õ£©";
+		cout << "ï¼ˆè®°å½•ä¸ºç©ºï¼‰";
 	}
 	for (int i = 0; i < items.size(); i++) {
 		Goto_XY(left_margin_No, up_margin + 2 + i * 2);
@@ -133,7 +133,7 @@ void Record::show()
 		Goto_XY(left_margin_time, up_margin + 2 + i * 2);
 		printf("%.1fs", items[i].steps_num / (items[i].ghost_num + 1)*50.0 / 1000);
 		Goto_XY(left_margin_speed, up_margin + 2 + i * 2);
-		cout << items[i].speed<<" ¸ñ/Ãë";
+		cout << items[i].speed<<" æ ¼/ç§’";
 	}
 	
 }

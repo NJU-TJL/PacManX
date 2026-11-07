@@ -8,22 +8,22 @@ const int MAP_SIZE = 29;
 const int PACMAN_X = MAP_SIZE / 2;
 const int PACMAN_Y = MAP_SIZE / 2;
 
-//Ê±ÖÓÖÜÆÚ
+//æ—¶é’Ÿå‘¨æœŸ
 extern const int TIME_SPEED;
 const int MAX_FREEZE_TIME = 5 * 1000 / TIME_SPEED;
 
-//µØÍ¼ÖĞµÄÄ³µãµÄÀàĞÍ£º¿Õ°×¡¢Ç½¡¢¶¹×Ó¡¢³¬¼¶¶¹×Ó
+//åœ°å›¾ä¸­çš„æŸç‚¹çš„ç±»å‹ï¼šç©ºç™½ã€å¢™ã€è±†å­ã€è¶…çº§è±†å­
 enum MAP_POS_TYPE { SPACE,WALL,PEAN,SUPER_PEAN };
 class MapPos: public Position
 {
-	int type; //µØÍ¼ÖĞµÄÄ³µãµÄÀàĞÍ
+	int type; //åœ°å›¾ä¸­çš„æŸç‚¹çš„ç±»å‹
 public:
-	//Éè¶¨µØÍ¼ÖĞÄ³µãµÄÀàĞÍ
+	//è®¾å®šåœ°å›¾ä¸­æŸç‚¹çš„ç±»å‹
 	void setType(int t);
 	int getType() { return type; }
 };
 
-//ÓÃÓÚÑ°Â·µÄ×ø±ê½á¹¹Ìå
+//ç”¨äºå¯»è·¯çš„åæ ‡ç»“æ„ä½“
 struct PosXY
 {
 	int x, y;
@@ -33,34 +33,34 @@ class Pacman;
 class Ghost;
 class Map
 {
-	//µØÍ¼ÖĞµÄÃ¿¸öµã£¬¿´×÷Ò»¸ö¸ö²»Í¬ÀàĞÍµÄÔªËØ
+	//åœ°å›¾ä¸­çš„æ¯ä¸ªç‚¹ï¼Œçœ‹ä½œä¸€ä¸ªä¸ªä¸åŒç±»å‹çš„å…ƒç´ 
 	MapPos points[MAP_SIZE][MAP_SIZE];
-	//Íæ¼ÒµÃ·Ö
+	//ç©å®¶å¾—åˆ†
 	int scores;
-	//Ê¤ÀûÄ¿±êµÃ·Ö
+	//èƒœåˆ©ç›®æ ‡å¾—åˆ†
 	int target_scores;
-	//³¬¼¶¶¹×Ó´øÀ´µÄÀäÈ´Ğ§¹ûÊ±¼ä
+	//è¶…çº§è±†å­å¸¦æ¥çš„å†·å´æ•ˆæœæ—¶é—´
 	int freezeTime;
-	//Ñ°Â·Ëã·¨µÄÄÚ²¿Ö÷Ìåº¯Êı
+	//å¯»è·¯ç®—æ³•çš„å†…éƒ¨ä¸»ä½“å‡½æ•°
 	void findPath(Position &A, Position&B);
 
 public:
 	friend class Game;
 	friend class Ghost;
 	Map() {};
-	//³õÊ¼»¯Éú³ÉµØÍ¼(Ê¹ÓÃÖ¸¶¨µÄÎÄ¼ş)
+	//åˆå§‹åŒ–ç”Ÿæˆåœ°å›¾(ä½¿ç”¨æŒ‡å®šçš„æ–‡ä»¶)
 	void init(const char* filepath, Pacman &pacman, vector<Ghost> &ghosts);
-	//Ä³µãÍ¼ĞÎÖØĞÂÊä³ö
+	//æŸç‚¹å›¾å½¢é‡æ–°è¾“å‡º
 	void renew(int x, int y) { points[x][y].print(); }
-	//·µ»ØÄ³µã(x,y)µÄÀàĞÍ,ÒÔÅĞ¶ÏÊÇ·ñ¿É´ï/¼Æ·Ö
+	//è¿”å›æŸç‚¹(x,y)çš„ç±»å‹,ä»¥åˆ¤æ–­æ˜¯å¦å¯è¾¾/è®¡åˆ†
 	int goXY(int x, int y) { return points[x][y].getType(); }
-	//³Ôµô(x,y)´¦µÄ¶¹×Ó
+	//åƒæ‰(x,y)å¤„çš„è±†å­
 	void delPean(int x, int y);
-	//¼ì²é(x,y)Î»ÖÃÊÇ·ñ³¬³öµØÍ¼·¶Î§,ÒÔ·ÀÖ¹Êı×éÔ½½ç
+	//æ£€æŸ¥(x,y)ä½ç½®æ˜¯å¦è¶…å‡ºåœ°å›¾èŒƒå›´,ä»¥é˜²æ­¢æ•°ç»„è¶Šç•Œ
 	bool oK(int x, int y);
-	//³Ôµô(x,y)´¦µÄ³¬¼¶¶¹×Ó
+	//åƒæ‰(x,y)å¤„çš„è¶…çº§è±†å­
 	void delSuperPean(int x, int y);
-	//ÕÒµ½Aµã¿ÉÒÔµ½´ïBµãµÄÂ·¾¶ÖĞµÄÏÂÒ»²½µÄ·½Ïò
+	//æ‰¾åˆ°Aç‚¹å¯ä»¥åˆ°è¾¾Bç‚¹çš„è·¯å¾„ä¸­çš„ä¸‹ä¸€æ­¥çš„æ–¹å‘
 	int findDir(Position &A, Position&B);
 };
 

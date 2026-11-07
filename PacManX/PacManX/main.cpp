@@ -4,23 +4,23 @@ const int WINDOWS_SIZE_X = (MAP_SIZE + SIDE_INFO_UI_SIEZ) * 2 - 1;
 const int WINDOWS_SIZE_Y = MAP_SIZE + INFO_UI_SIZE;
 int main() {
 
-	//½øÈëÓÎÏ· 
+	//è¿›å…¥æ¸¸æˆ 
 	Game gameCtrl;
 	int choice = 0;
 	while (true) {
-		//Ö÷½çÃæµÄÑ¡ÏîµÄÑ¡Ôñ
+		//ä¸»ç•Œé¢çš„é€‰é¡¹çš„é€‰æ‹©
 		choice = gameCtrl.start();
-		if (choice == 0) { //¿ªÊ¼ÓÎÏ·
-			// ¿ªÆôÓÎÏ·Ç°µÄÄÑ¶ÈÑ¡Ôñ
+		if (choice == 0) { //å¼€å§‹æ¸¸æˆ
+			// å¼€å¯æ¸¸æˆå‰çš„éš¾åº¦é€‰æ‹©
 			if(!gameCtrl.settings()) continue;
-			// ¿ªÆôÒ»¾ÖÓÎÏ·
+			// å¼€å¯ä¸€å±€æ¸¸æˆ
 			gameCtrl.init();
 			gameCtrl.loop();
 		}
-		else if (choice == 1) { //ÀúÊ·¼ÇÂ¼
-			//Ñ¡Ôñ»Ø·ÅÄÄ¸öÀúÊ·¼ÇÂ¼
+		else if (choice == 1) { //å†å²è®°å½•
+			//é€‰æ‹©å›æ”¾å“ªä¸ªå†å²è®°å½•
 			int record_idx=gameCtrl.show_record();
-			if (record_idx != -1) { //Esc¼ü·µ»ØÖ÷Ò³Ãæ
+			if (record_idx != -1) { //Escé”®è¿”å›ä¸»é¡µé¢
 				gameCtrl.play(record_idx);
 			}
 		}

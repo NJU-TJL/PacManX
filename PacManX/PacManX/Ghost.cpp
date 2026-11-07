@@ -7,16 +7,16 @@ Ghost::Ghost(int x, int y)
 	setXY(x, y);
 	go = UP;
 	color = RED_COLOR;
-	setKey("©ì");
+	setKey("â•ˆ");
 }
 extern int right_way_rate;
 int Ghost::move(Map & map,Pacman &pacman)
 {
-	int res = -1;//·µ»ØÖµ£º×ßµÄ·½Ïò
+	int res = -1;//è¿”å›å€¼ï¼šèµ°çš„æ–¹å‘
 
-	//ÏÈ±¸·İx,y ·ÀÖ¹ÏÂÒ»¸öÎ»ÖÃ²»ºÏ·¨
+	//å…ˆå¤‡ä»½x,y é˜²æ­¢ä¸‹ä¸€ä¸ªä½ç½®ä¸åˆæ³•
 	int tempX = x, tempY = y;
-	bool flag = true;//ÓÃÓÚ±êÖ¾£¬ÊÇ·ñÂõ³öÁËÒ»²½
+	bool flag = true;//ç”¨äºæ ‡å¿—ï¼Œæ˜¯å¦è¿ˆå‡ºäº†ä¸€æ­¥
 	while (flag) {
 		int dir;
 		if (!RANDOM(right_way_rate)) {
@@ -24,7 +24,7 @@ int Ghost::move(Map & map,Pacman &pacman)
 		} else{
 			bool reverse_flag = true;
 			while (reverse_flag) {
-				dir = RANDOM(4);// Ëæ»ú²úÉúÒÆ¶¯·½Ïò,ÇÒ²»Ïò·´·½ÏòÒÆ¶¯£¨Ö±µ½³É¹¦Âõ³öÁËÒ»²½£©
+				dir = RANDOM(4);// éšæœºäº§ç”Ÿç§»åŠ¨æ–¹å‘,ä¸”ä¸å‘åæ–¹å‘ç§»åŠ¨ï¼ˆç›´åˆ°æˆåŠŸè¿ˆå‡ºäº†ä¸€æ­¥ï¼‰
 				switch (go)
 				{
 				case UP:
@@ -82,9 +82,9 @@ int Ghost::move(Map & map,Pacman &pacman)
 int Ghost::move(int dir, Map & map, Pacman & pacman)
 {
 	if (dir == -1) return dir;
-	//ÏÈ±¸·İx,y ·ÀÖ¹ÏÂÒ»¸öÎ»ÖÃ²»ºÏ·¨
+	//å…ˆå¤‡ä»½x,y é˜²æ­¢ä¸‹ä¸€ä¸ªä½ç½®ä¸åˆæ³•
 	int tempX = x, tempY = y;
-	bool flag = true;//ÓÃÓÚ±êÖ¾£¬ÊÇ·ñÂõ³öÁËÒ»²½
+	bool flag = true;//ç”¨äºæ ‡å¿—ï¼Œæ˜¯å¦è¿ˆå‡ºäº†ä¸€æ­¥
 	switch (dir)
 	{
 	case UP:

@@ -1,6 +1,6 @@
 #include"win_tools.h"
 
-//ÉèÖÃ¹â±êÎ»ÖÃ
+//è®¾ç½®å…‰æ ‡ä½ç½®
 void Goto_XY(const int x, const int y)
 {
 	COORD position;
@@ -9,7 +9,7 @@ void Goto_XY(const int x, const int y)
 	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), position);
 }
 
-//Òş²Ø¹â±ê
+//éšè—å…‰æ ‡
 void HideCursor()
 {
 	HANDLE fd = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -19,16 +19,16 @@ void HideCursor()
 	SetConsoleCursorInfo(fd, &cinfo);
 }
 
-//ÉèÖÃ´°¿Ú´óĞ¡
+//è®¾ç½®çª—å£å¤§å°
 void SetWindowSize(int cols, int lines)
 {
-	system("title PacManX");//ÉèÖÃ´°¿Ú±êÌâ
+	system("title PacManX");//è®¾ç½®çª—å£æ ‡é¢˜
 	char cmd[30];
 	sprintf(cmd, "mode con cols=%d lines=%d", cols, lines);
-	system(cmd); //ÉèÖÃ´°¿Ú¿í¶ÈºÍ¸ß¶È
+	system(cmd); //è®¾ç½®çª—å£å®½åº¦å’Œé«˜åº¦
 }
 
-//ÉèÖÃÎÄ±¾ÑÕÉ«
+//è®¾ç½®æ–‡æœ¬é¢œè‰²
 void SetColor(int colorID)
 {
 	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), colorID);

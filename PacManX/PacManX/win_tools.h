@@ -6,40 +6,40 @@
 using namespace std;
 
 
-//иХжц╧Б╠Йн╩жц
+//Х╝╬Г╫╝Е┘┴Ф═┤Д╫█Г╫╝
 void Goto_XY(const int x, const int y);
-//рЧ╡ь╧Б╠Й
+//И ░Х≈▐Е┘┴Ф═┤
 void HideCursor();
-//╡ЗиЗ0~n╣дкФ╩ЗйЩ
+//Д╨╖Г■÷0~nГ └И ▐Ф°╨Ф∙╟
 inline int RANDOM(int n) { return rand() % n; }
-//иХжц╢╟©з╢Сп║
+//Х╝╬Г╫╝Г╙≈Е▐ёЕ╓╖Е╟▐
 void SetWindowSize(int cols, int lines);
-//иХжцнд╠╬яуи╚
+//Х╝╬Г╫╝Ф√┤Ф°╛И╒°Х┴╡
 void SetColor(int colorID);
 
 
-//аа╟ви╚
+//Д╨╝Г≥╫Х┴╡
 const int WHITE_COLOR = FOREGROUND_RED | FOREGROUND_BLUE | FOREGROUND_GREEN | FOREGROUND_INTENSITY;
-//аа╨Ли╚
+//Д╨╝Г╨╒Х┴╡
 const int RED_COLOR = FOREGROUND_RED | FOREGROUND_INTENSITY;
-//ааю╤и╚
+//Д╨╝Х⌠²Х┴╡
 const int BLUE_COLOR = FOREGROUND_BLUE | FOREGROUND_INTENSITY;
-//аабли╚
+//Д╨╝Г╩©Х┴╡
 const int GREEN_COLOR = FOREGROUND_GREEN | FOREGROUND_INTENSITY;
-//ааю╤бли╚
+//Д╨╝Х⌠²Г╩©Х┴╡
 const int BLUE_GREEN_COLOR = FOREGROUND_BLUE | FOREGROUND_GREEN | FOREGROUND_INTENSITY;
-//╣╜ю╤бли╚
+//Ф╥║Х⌠²Г╩©Х┴╡
 const int BLUE_LITE_COLOR = FOREGROUND_BLUE | FOREGROUND_GREEN;
-//аа╩фи╚
+//Д╨╝И╩└Х┴╡
 const int YELLOW_COLOR = FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_INTENSITY;
-//╣╜╩фи╚
+//Ф╥║И╩└Х┴╡
 const int YELLOW_LITE_COLOR = FOREGROUND_RED | FOREGROUND_GREEN;
-//╩ри╚
+//Г│╟Х┴╡
 const int GRAY_COLOR = FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE;
-//аа╥ши╚
+//Д╨╝Г╡┴Х┴╡
 const int PINK_COLOR = FOREGROUND_RED | FOREGROUND_BLUE | FOREGROUND_INTENSITY;
 
-/* ╨╛╠Ё╬╟и╚ */
+/* Е░╚Х┐▄Ф≥╞Х┴╡ */
 const int TITLE_COLOR = BACKGROUND_INTENSITY | BACKGROUND_RED | BACKGROUND_GREEN | BACKGROUND_BLUE;
 const int SELECTED_COLOR = BACKGROUND_GREEN | BACKGROUND_BLUE | WHITE_COLOR;
 const int THEME_COLOR = BLUE_GREEN_COLOR;

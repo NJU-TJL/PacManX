@@ -5,33 +5,33 @@ void Pacman::init(int x, int y)
 	color = BLUE_GREEN_COLOR;
 	setXY(x, y);
 	go = UP;
-	setKey("¡ü");
+	setKey("â†‘");
 }
-//pacman³¯Ä³¸ö·½ÏòÒÆ¶¯£¬ÇÒÔÚMapÖĞÒª¼ì²âÒÆ¶¯ÊÇ·ñºÏ·¨£¨±ÈÈç£¬Ç½ÎŞ·¨Ç°½ø£©
+//pacmanæœæŸä¸ªæ–¹å‘ç§»åŠ¨ï¼Œä¸”åœ¨Mapä¸­è¦æ£€æµ‹ç§»åŠ¨æ˜¯å¦åˆæ³•ï¼ˆæ¯”å¦‚ï¼Œå¢™æ— æ³•å‰è¿›ï¼‰
 void Pacman::move(int dir, Map &map)
 {
 	if (dir == -1) return;
 
-	//ÏÈ±¸·İx,y ·ÀÖ¹ÏÂÒ»¸öÎ»ÖÃ²»ºÏ·¨
+	//å…ˆå¤‡ä»½x,y é˜²æ­¢ä¸‹ä¸€ä¸ªä½ç½®ä¸åˆæ³•
 	int tempX=x, tempY=y;
 
 	switch (dir)
 	{
 	case UP:
 		--y;
-		setKey("¡ü");
+		setKey("â†‘");
 		break;
 	case DOWN:
 		++y;
-		setKey("¡ı");
+		setKey("â†“");
 		break;
 	case LEFT:
 		--x;
-		setKey("¡û");
+		setKey("â†");
 		break;
 	case RIGHT:
 		++x;
-		setKey("¡ú");
+		setKey("â†’");
 		break;
 	default:
 		break;
